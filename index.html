@@ -341,7 +341,7 @@
 <body>
     <div class="main-container">
         <div class="form-container">
-            <h1>Employee Registration</h1>
+            <h1>User Registration</h1>
             
             <form id="employeeForm">
                 <div class="form-group">
@@ -357,7 +357,7 @@
                 </div>
                 
                 <button type="submit" class="submit-btn" id="submitBtn">
-                    Register Employee
+                    Register User
                 </button>
             </form>
 
@@ -475,7 +475,7 @@
 
                 if (response.ok) {
                     const result = await response.json();
-                    showMessage(`Employee registered successfully! ID: ${result.id || 'Generated'}`, 'success');
+                    showMessage(`User registered successfully! ID: ${result.id || 'Generated'}`, 'success');
                     form.reset();
                     
                     // Add message to chat
@@ -485,7 +485,7 @@
                 }
             } catch (error) {
                 console.error('Error:', error);
-                showMessage('Failed to register employee. Please try again.', 'error');
+                showMessage('Failed to register user. Please try again.', 'error');
             } finally {
                 submitBtn.disabled = false;
                 loading.style.display = 'none';
