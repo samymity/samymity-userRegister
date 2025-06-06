@@ -221,7 +221,7 @@
 
                 if (response.ok) {
                     const result = await response.json();
-                    showMessage(`Employee registered successfully! ID: ${result.id || 'Generated'}`, 'success');
+                    showMessage(`User registered successfully! ID: ${result.id || 'Generated'}`, 'success');
                     form.reset();
                 } else {
                     throw new Error(`HTTP error! status: ${response.status}`);
