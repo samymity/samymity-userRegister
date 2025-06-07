@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Registration & Support</title>
+    <title>Padhai Passion - Your Gateway to Government Jobs</title>
     <style>
+        /* General styles for the Padhai Passion site */
         * {
             margin: 0;
             padding: 0;
@@ -13,20 +14,445 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
         }
 
-        .main-container {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
+            padding: 0 20px;
         }
 
-        /* Employee Registration Form Styles */
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="200" cy="200" r="100" fill="rgba(255,255,255,0.1)"/><circle cx="800" cy="300" r="150" fill="rgba(255,255,255,0.05)"/><circle cx="400" cy="700" r="80" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            padding: 2rem 0;
+            background: white;
+            border-radius: 20px 20px 0 0;
+            margin-top: -20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-area {
+            padding: 2rem;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 2rem;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tab.active {
+            color: #667eea;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* News Items */
+        .news-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .news-item:hover {
+            background: #f8f9ff;
+            transform: translateX(5px);
+        }
+
+        .news-item h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .news-source {
+            font-size: 0.8rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Job Items */
+        .job-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .job-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .job-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-org {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        /* Book Recommendations */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .book-card {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Search */
+        .search-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #667eea;
+        }
+
+        /* User Registration Form Styles - from user_registration_form.html */
         .form-container {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -34,7 +460,8 @@
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 450px;
+            max-width: 450px; /* Adjusted for tab content */
+            margin: 20px auto; /* Centered in tab */
             text-align: center;
             transition: transform 0.3s ease;
         }
@@ -43,7 +470,8 @@
             transform: translateY(-5px);
         }
 
-        h1 {
+        /* Overriding h1 for form only */
+        .form-container h1 {
             color: #333;
             margin-bottom: 30px;
             font-size: 2.2em;
@@ -55,7 +483,7 @@
             text-align: left;
         }
 
-        label {
+        .form-container label {
             display: block;
             margin-bottom: 8px;
             color: #555;
@@ -63,7 +491,7 @@
             font-size: 0.95em;
         }
 
-        input[type="email"] {
+        .form-container input[type="email"] {
             width: 100%;
             padding: 15px 20px;
             border: 2px solid #e1e5e9;
@@ -73,7 +501,7 @@
             background: #f8f9fa;
         }
 
-        input[type="email"]:focus {
+        .form-container input[type="email"]:focus {
             outline: none;
             border-color: #667eea;
             background: white;
@@ -106,12 +534,14 @@
             transform: none;
         }
 
-        .loading {
+        /* Reusing .loading from padhai_passion_clone.html */
+        .form-loading {
             display: none;
             margin-top: 20px;
         }
 
-        .loading-spinner {
+        /* Reusing .loading-spinner from padhai_passion_clone.html */
+        .form-loading .loading-spinner {
             width: 30px;
             height: 30px;
             border: 3px solid #f3f3f3;
@@ -121,12 +551,7 @@
             margin: 0 auto;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .message {
+        .form-message {
             margin-top: 20px;
             padding: 15px;
             border-radius: 8px;
@@ -134,19 +559,19 @@
             display: none;
         }
 
-        .success {
+        .form-message.success {
             background: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
         }
 
-        .error {
+        .form-message.error {
             background: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
 
-        /* Chatbot Styles */
+        /* Chatbot Styles - from user_registration_form.html */
         .chatbot-container {
             position: fixed;
             bottom: 20px;
@@ -319,13 +744,124 @@
             color: white;
         }
 
-        /* Responsive Design */
+        /* Exam Question Generator Styles */
+        .question-generator-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px; /* Adjust width as needed */
+            margin: 20px auto;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .question-generator-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .question-generator-container h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+            font-weight: 300;
+        }
+
+        .question-generator-container input[type="text"] {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            margin-bottom: 20px;
+        }
+
+        .question-generator-container input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        .question-generator-container .generate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: auto; /* Changed from 100% to auto */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .question-generator-container .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .question-generator-container .generate-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .generated-questions-output {
+            margin-top: 30px;
+            text-align: left;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e1e5e9;
+            min-height: 150px;
+            white-space: pre-wrap; /* Preserve whitespace and newlines */
+            word-wrap: break-word; /* Break long words */
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .main-container {
+            .header-content {
                 flex-direction: column;
-                align-items: center;
+                gap: 1rem;
             }
 
+            nav {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            .tab {
+                min-width: max-content;
+            }
+
+            /* Responsive for chatbot */
             .chat-window {
                 width: 320px;
                 height: 450px;
@@ -335,40 +871,290 @@
                 bottom: 10px;
                 right: 10px;
             }
+
+            /* Responsive for form and question generator */
+            .form-container, .question-generator-container {
+                padding: 20px;
+            }
+
+            .form-container h1, .question-generator-container h2 {
+                font-size: 1.8em;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="main-container">
-        <div class="form-container">
-            <h1>User Registration</h1>
-            
-            <form id="employeeForm">
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        required 
-                        placeholder="Enter employee email"
-                        autocomplete="email"
-                    >
-                </div>
-                
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    Register User
-                </button>
-            </form>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">📚 Padhai Passion</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#gpsc">GPSC</a></li>
+                        <li><a href="#jobs">Jobs</a></li>
+                        <li><a href="#books">Books</a></li>
+                        <li><a href="#news">News</a></li>
+                        <li><a href="#register">Register</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
+            </div>
+        </div>
+    </header>
 
-            <div class="loading" id="loading">
-                <div class="loading-spinner"></div>
-                <p>Processing...</p>
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Gateway to Government Jobs</h1>
+                <p>Comprehensive preparation materials for GPSC, Police Inspector, and other competitive exams</p>
+                <a href="#gpsc" class="cta-button">Start Learning Now</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="content-area">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search for books, jobs, or exam materials..." id="searchInput">
+                    <button class="search-btn" onclick="performSearch()">Search</button>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab('gpsc')">GPSC Preparation</button>
+                    <button class="tab" onclick="showTab('jobs')">Latest Jobs</button>
+                    <button class="tab" onclick="showTab('books')">Recommended Books</button>
+                    <button class="tab" onclick="showTab('news')">Today's News</button>
+                    <button class="tab" onclick="showTab('register')">Register</button>
+                </div>
+
+                <div id="gpsc" class="tab-content active">
+                    <div class="card">
+                        <h2>🎯 GPSC Class 1-2 Preparation</h2>
+                        <div class="book-grid">
+                            <div class="book-card" onclick="showNotification('GPSC Prelims GS-1 books added to reading list!')">
+                                <h3>Prelims GS-1</h3>
+                                <p>Essential books and materials for General Studies Paper 1</p>
+                            </div>
+                            <div class="book-card" onclick="showNotification('GPSC Prelims GS-2 books added to reading list!')">
+                                <h3>Prelims GS-2</h3>
+                                <p>Comprehensive guide for General Studies Paper 2</p>
+                            </div>
+                            <div class="book-card" onclick="showNotification('GPSC Mains preparation materials added!')">
+                                <h3>Mains Papers</h3>
+                                <p>Complete preparation for Mains examination</p>
+                            </div>
+                            <div class="book-card" onclick="showNotification('Essay & Language papers guide added!')">
+                                <h3>Essay & Languages</h3>
+                                <p>Gujarati, English, and Essay writing techniques</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>📋 Exam Strategy</h2>
+                        <h3>How to Prepare for GPSC Exam?</h3>
+                        <p>A comprehensive guide to crack GPSC exams with effective strategies, time management, and preparation techniques.</p>
+                        <br>
+                        <h3>Changes in GPSC 2019 Class 1-2</h3>
+                        <p>Stay updated with the latest syllabus changes and exam pattern modifications for better preparation.</p>
+                    </div>
+
+                    <!-- New Exam Question Generator Feature -->
+                    <div class="question-generator-container">
+                        <h2>✨ Exam Question Generator</h2>
+                        <p>Enter a topic to generate practice questions:</p>
+                        <input type="text" id="topicInput" placeholder="e.g., Indian History, Current Affairs, Science">
+                        <button class="generate-btn" id="generateQuestionsBtn">Generate Questions</button>
+                        <div class="form-loading" id="questionLoading" style="display: none;">
+                            <div class="loading-spinner"></div>
+                            <p>Generating questions...</p>
+                        </div>
+                        <div class="generated-questions-output" id="generatedQuestionsOutput">
+                            <!-- Generated questions will appear here -->
+                        </div>
+                        <div class="form-message" id="questionMessage" style="display: none;"></div>
+                    </div>
+                </div>
+
+                <div id="jobs" class="tab-content">
+                    <div class="card">
+                        <h2>🔔 Latest Job Notifications</h2>
+                        <div class="job-item">
+                            <div class="job-title">RailTel Corporation Job Vacancy 2025</div>
+                            <div class="job-org">RailTel Corporation of India Limited (RCIL)</div>
+                        </div>
+                        <div class="job-item">
+                            <div class="job-title">HPCL R&D Professionals Recruitment 2025</div>
+                            <div class="job-org">Hindustan Petroleum Corporation</div>
+                        </div>
+                        <div class="job-item">
+                            <div class="job-title">Punjab & Haryana High Court Judge Recruitment</div>
+                            <div class="job-org">Chandigarh High Court</div>
+                        </div>
+                        <div class="job-item">
+                            <div class="job-title">ISRO Scientist/Engineer Recruitment 2025</div>
+                            <div class="job-org">Indian Space Research Organisation</div>
+                        </div>
+                        <div class="job-item">
+                            <div class="job-title">NTPC Deputy Manager Vacancy 2025</div>
+                            <div class="job-org">NTPC Limited</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="books" class="tab-content">
+                    <div class="card">
+                        <h2>📚 Recommended Books</h2>
+                        <div class="book-grid">
+                            <div class="book-card">
+                                <h3>Police Inspector (PI) Prelims</h3>
+                                <p>Best books and materials for PI exam preparation</p>
+                            </div>
+                            <div class="book-card">
+                                <h3>DySO Exam Prelims</h3>
+                                <p>Comprehensive study materials for DySO examination</p>
+                            </div>
+                            <div class="book-card">
+                                <h3>Assistant Engineer</h3>
+                                <p>Technical books for GPSC Assistant Engineer posts</p>
+                            </div>
+                            <div class="book-card">
+                                <h3>General Knowledge</h3>
+                                <p>Current affairs and GK books for all exams</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="news" class="tab-content">
+                    <div class="card">
+                        <h2>📰 Today's Top News</h2>
+                        <div class="news-item">
+                            <div class="news-source">The Hindu</div>
+                            <h4>Pawan Kalyan Donates ₹50 Lakh to Pahalgam Victim's Family</h4>
+                            <p>The Minister announced party support for the bereaved family...</p>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-source">Times of India</div>
+                            <h4>RBI Reduces Repo Rate by 50 Basis Points</h4>
+                            <p>Home loan rates head below 8% - check EMI calculations...</p>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-source">The Hindu</div>
+                            <h4>Haryana IMA Seeks Clarity on Cashless Treatment Scheme</h4>
+                            <p>Road accident victims to get cashless emergency care up to ₹...</p>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-source">Times of India</div>
+                            <h4>Google AI CEO Advises Students on STEM Education</h4>
+                            <p>Demis Hassabis encourages students to embrace AI tools...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Registration Form Tab Content -->
+                <div id="register" class="tab-content">
+                    <div class="form-container">
+                        <h1>User Registration</h1>
+                        
+                        <form id="userForm">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    required 
+                                    placeholder="Enter user email"
+                                    autocomplete="email"
+                                >
+                            </div>
+                            
+                            <button type="submit" class="submit-btn" id="submitBtn">
+                                Register User
+                            </button>
+                        </form>
+
+                        <div class="form-loading" id="formLoading">
+                            <div class="loading-spinner"></div>
+                            <p>Processing...</p>
+                        </div>
+
+                        <div class="form-message" id="formMessage"></div>
+                    </div>
+                </div>
             </div>
 
-            <div class="message" id="message"></div>
+            <div class="sidebar">
+                <div class="card">
+                    <h2>🎯 Quick Links</h2>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem;"><a href="#" style="color: #667eea; text-decoration: none;">GSEB SSC Result 2025</a></li>
+                        <li style="margin-bottom: 1rem;"><a href="#" style="color: #667eea; text-decoration: none;">SWAMULYANKAN 2.0 Exam</a></li>
+                        <li style="margin-bottom: 1rem;"><a href="#" style="color: #667eea; text-decoration: none;">GPSC TDO Answer Key</a></li>
+                        <li style="margin-bottom: 1rem;"><a href="#" style="color: #667eea; text-decoration: none;">PM Awas Yojana 2025</a></li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>📊 Exam Calendar</h2>
+                    <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 10px;">
+                        <h3 id="currentDate"></h3>
+                        <p>Stay updated with exam dates</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>💡 Study Tips</h2>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem; padding: 0.5rem; background: #f8f9ff; border-radius: 5px;">📝 Make daily study schedule</li>
+                        <li style="margin-bottom: 1rem; padding: 0.5rem; background: #f8f9ff; border-radius: 5px;">📖 Read newspapers daily</li>
+                        <li style="margin-bottom: 1rem; padding: 0.5rem; background: #f8f9ff; border-radius: 5px;">✍️ Practice mock tests</li>
+                        <li style="margin-bottom: 1rem; padding: 0.5rem; background: #f8f9ff; border-radius: 5px;">🎯 Focus on weak areas</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">GPSC Preparation</a></li>
+                        <li><a href="#">Job Notifications</a></li>
+                        <li><a href="#">Exam Results</a></li>
+                        <li><a href="#">Study Materials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Previous Papers</a></li>
+                        <li><a href="#">Mock Tests</a></li>
+                        <li><a href="#">Video Lectures</a></li>
+                        <li><a href="#">Current Affairs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="#">Email: info@padhaipassion.com</a></li>
+                        <li><a href="#">Phone: +91 9999999999</a></li>
+                        <li><a href="#">Address: Gujarat, India</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p>&copy; 2025 Padhai Passion. All rights reserved. | Empowering minds for government careers</p>
+        </div>
+    </footer>
+
+    <div class="notification" id="notification"></div>
 
     <!-- Chatbot -->
     <div class="chatbot-container">
@@ -382,14 +1168,14 @@
             
             <div class="chat-messages" id="chatMessages">
                 <div class="message-bubble bot-message">
-                    Hi! I'm here to help you with product information and employee registration. How can I assist you today?
+                    Hi! I'm here to help you with product information and user registration. How can I assist you today?
                 </div>
             </div>
             
             <div class="quick-actions">
                 <div class="quick-action" data-message="What products do you offer?">Our Products</div>
                 <div class="quick-action" data-message="How much does it cost?">Pricing</div>
-                <div class="quick-action" data-message="How do I register an employee?">Registration Help</div>
+                <div class="quick-action" data-message="How do I register a user?">Registration Help</div>
                 <div class="quick-action" data-message="Contact support">Support</div>
             </div>
             
@@ -416,56 +1202,203 @@
     </div>
 
     <script>
-        // Configuration
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab, using event.target
+            // Check if the event.target is a button from the .tabs container
+            if (event.target && event.target.classList.contains('tab')) {
+                event.target.classList.add('active');
+            } else {
+                // If clicked from navigation, find the corresponding tab button and activate it
+                const tabButton = document.querySelector(`.tab[onclick*="showTab('${tabName}')"]`);
+                if (tabButton) {
+                    tabButton.classList.add('active');
+                }
+            }
+        }
+
+        // Search functionality
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            if (searchTerm.trim() === '') {
+                showNotification('Please enter a search term!', 'warning');
+                return;
+            }
+            
+            // Simulate search with loading
+            const searchBtn = document.querySelector('.search-btn');
+            const originalText = searchBtn.innerHTML;
+            searchBtn.innerHTML = '<span class="loading-spinner"></span>'; // Reusing existing spinner
+            
+            setTimeout(() => {
+                searchBtn.innerHTML = originalText;
+                showNotification(`Searching for "${searchTerm}"... Found 15 results!`, 'success');
+                
+                // Here you would typically filter content or redirect to search results
+                highlightSearchResults(searchTerm);
+            }, 1500);
+        }
+
+        // Highlight search results
+        function highlightSearchResults(searchTerm) {
+            const allText = document.querySelectorAll('p, h3, h4, .job-title, .job-org');
+            allText.forEach(element => {
+                // Clear previous highlights
+                element.innerHTML = element.textContent; 
+
+                const text = element.innerHTML;
+                const highlightedText = text.replace(
+                    new RegExp(searchTerm, 'gi'), 
+                    `<mark style="background: #ffeb3b; padding: 2px 4px; border-radius: 3px;">$&</mark>`
+                );
+                element.innerHTML = highlightedText;
+            });
+        }
+
+        // Notification system
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.innerHTML = message;
+            notification.className = `notification show ${type}`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Update current date
+        function updateDate() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        // Search on Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1); // Get ID without '#'
+                if (targetId === 'register' || targetId === 'gpsc' || targetId === 'jobs' || targetId === 'books' || targetId === 'news') {
+                    showTab(targetId); // Activate the tab if it's a tab link
+                } else {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+                // Hide mobile menu after clicking a link
+                const nav = document.querySelector('nav');
+                if (window.innerWidth <= 768 && nav.style.display === 'block') {
+                    nav.style.display = 'none';
+                }
+            });
+        });
+
+        // Intersection Observer for animations (existing from original)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s ease forwards';
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .hero-content, .job-item, .news-item, .book-card').forEach(element => {
+            element.style.opacity = '0'; // Hide elements initially
+            observer.observe(element);
+        });
+
+        // --- User Registration Form Logic (from user_registration_form.html) ---
         const CONFIG = {
-            EMPLOYEE_WEBHOOK_URL: 'https://n8n-ttiq.onrender.com/webhook/employee-insert',
-            CHATBOT_WEBHOOK_URL: 'https://your-n8n-instance.app.n8n.cloud/webhook/chatbot',
+            USER_WEBHOOK_URL: 'https://n8n-ttiq.onrender.com/webhook/user-insert', // Example webhook
+            CHATBOT_WEBHOOK_URL: 'https://your-n8n-instance.app.n8n.cloud/webhook/chatbot', // Placeholder
             // Product information database
             PRODUCTS: {
-                'employee management': {
-                    name: 'Employee Management System',
-                    description: 'Complete HR solution for managing employees, registration, and onboarding.',
-                    price: '$29/month per employee',
-                    features: ['Employee Registration', 'Profile Management', 'Onboarding Automation', 'Document Storage']
+                'user management': {
+                    name: 'User Management System',
+                    description: 'Complete solution for managing users, registration, and onboarding.',
+                    price: '$29/month per user',
+                    features: ['User Registration', 'Profile Management', 'Onboarding Automation', 'Document Storage']
                 },
-                'hr solution': {
-                    name: 'HR Complete Suite',
-                    description: 'All-in-one human resources management platform.',
+                'account solution': {
+                    name: 'Account Complete Suite',
+                    description: 'All-in-one user account management platform.',
                     price: '$49/month per company',
-                    features: ['Payroll Management', 'Leave Tracking', 'Performance Reviews', 'Compliance Tools']
+                    features: ['Account Management', 'Access Control', 'User Analytics', 'Security Tools']
                 },
                 'registration system': {
                     name: 'Smart Registration Platform',
-                    description: 'Automated employee registration and verification system.',
+                    description: 'Automated user registration and verification system.',
                     price: '$19/month',
                     features: ['Instant Registration', 'Email Verification', 'Database Integration', 'Real-time Updates']
                 }
             }
         };
 
-        // Employee Registration Form Logic
-        const form = document.getElementById('employeeForm');
+        const userForm = document.getElementById('userForm');
         const submitBtn = document.getElementById('submitBtn');
-        const loading = document.getElementById('loading');
-        const message = document.getElementById('message');
+        const formLoading = document.getElementById('formLoading'); // Renamed from 'loading'
+        const formMessage = document.getElementById('formMessage'); // Renamed from 'message'
         const emailInput = document.getElementById('email');
 
-        form.addEventListener('submit', async (e) => {
+        userForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const email = emailInput.value.trim();
             
             if (!email) {
-                showMessage('Please enter a valid email address', 'error');
+                showFormMessage('Please enter a valid email address', 'error');
                 return;
             }
 
             submitBtn.disabled = true;
-            loading.style.display = 'block';
-            message.style.display = 'none';
+            formLoading.style.display = 'block';
+            formMessage.style.display = 'none';
 
             try {
-                const response = await fetch(CONFIG.EMPLOYEE_WEBHOOK_URL, {
+                const response = await fetch(CONFIG.USER_WEBHOOK_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -475,8 +1408,8 @@
 
                 if (response.ok) {
                     const result = await response.json();
-                    showMessage(`User registered successfully! ID: ${result.id || 'Generated'}`, 'success');
-                    form.reset();
+                    showFormMessage(`User registered successfully! ID: ${result.id || 'Generated'}`, 'success');
+                    userForm.reset();
                     
                     // Add message to chat
                     addChatMessage(`Great! I helped register ${email} successfully!`, 'bot');
@@ -485,26 +1418,27 @@
                 }
             } catch (error) {
                 console.error('Error:', error);
-                showMessage('Failed to register user. Please try again.', 'error');
+                showFormMessage('Failed to register user. Please try again. (Check webhook URL)', 'error');
             } finally {
                 submitBtn.disabled = false;
-                loading.style.display = 'none';
+                formLoading.style.display = 'none';
             }
         });
 
-        function showMessage(text, type) {
-            message.textContent = text;
-            message.className = `message ${type}`;
-            message.style.display = 'block';
+        // Renamed from showMessage to avoid conflict
+        function showFormMessage(text, type) {
+            formMessage.textContent = text;
+            formMessage.className = `form-message ${type}`;
+            formMessage.style.display = 'block';
             
             if (type === 'success') {
                 setTimeout(() => {
-                    message.style.display = 'none';
+                    formMessage.style.display = 'none';
                 }, 5000);
             }
         }
 
-        // Chatbot Logic
+        // --- Chatbot Logic (from user_registration_form.html) ---
         const chatToggle = document.getElementById('chatToggle');
         const chatWindow = document.getElementById('chatWindow');
         const chatMessages = document.getElementById('chatMessages');
@@ -559,26 +1493,68 @@
             
             try {
                 // First try to get response from n8n webhook
-                const response = await fetch(CONFIG.CHATBOT_WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ 
-                        message: message,
-                        timestamp: new Date().toISOString()
-                    })
-                });
+                const payload = {
+                    contents: [{ role: "user", parts: [{ text: message }] }],
+                    generationConfig: {
+                        responseMimeType: "application/json", // Request structured JSON
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                "response": { "type": "STRING" },
+                                "action": { "type": "STRING", "enum": ["register_user", "none"] },
+                                "email": { "type": "STRING" } // Optional email for registration
+                            }
+                        }
+                    }
+                };
 
-                if (response.ok) {
-                    const result = await response.json();
-                    hideTyping();
-                    addChatMessage(result.response || result.message || 'I received your message!', 'bot');
-                } else {
-                    throw new Error('Webhook not available');
+                const apiKey = ""; // Canvas will provide this at runtime
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.statusText}`);
                 }
+
+                const result = await response.json();
+                hideTyping();
+
+                let botResponse = 'I am sorry, I could not process that. Please try again.';
+                let actionToPerform = 'none';
+                let emailForRegistration = '';
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    try {
+                        const jsonResponse = JSON.parse(result.candidates[0].content.parts[0].text);
+                        botResponse = jsonResponse.response || botResponse;
+                        actionToPerform = jsonResponse.action || actionToPerform;
+                        emailForRegistration = jsonResponse.email || emailForRegistration;
+                    } catch (e) {
+                        console.error('Failed to parse JSON from LLM:', e);
+                        botResponse = result.candidates[0].content.parts[0].text; // Fallback to raw text
+                    }
+                }
+
+                addChatMessage(botResponse, 'bot');
+
+                if (actionToPerform === 'register_user' && emailForRegistration) {
+                    emailInput.value = emailForRegistration;
+                    // Automatically trigger form submission or prompt user
+                    showFormMessage(`Pre-filled email for registration: ${emailForRegistration}. Click 'Register User' to complete.`, 'success');
+                    // Optionally, trigger a click on the submit button
+                    // submitBtn.click();
+                }
+
             } catch (error) {
-                // Fallback to local AI responses
+                console.error('Error with chatbot API:', error);
+                // Fallback to local AI responses if API fails
                 console.log('Using local responses');
                 setTimeout(() => {
                     hideTyping();
@@ -600,23 +1576,36 @@
             
             // General responses
             if (msg.includes('price') || msg.includes('cost') || msg.includes('pricing')) {
-                return "Our pricing varies by product:\n\n• Employee Management System: $29/month per employee\n• HR Complete Suite: $49/month per company\n• Smart Registration Platform: $19/month\n\nWould you like details about any specific product?";
+                return "Our pricing varies by product:\n\n• User Management System: $29/month per user\n• Account Complete Suite: $49/month per company\n• Smart Registration Platform: $19/month\n\nWould you like details about any specific product?";
             }
             
             if (msg.includes('product') || msg.includes('service')) {
-                return "We offer three main products:\n\n1. **Employee Management System** - Complete HR solution\n2. **HR Complete Suite** - All-in-one HR platform\n3. **Smart Registration Platform** - Automated registration system\n\nWhich one interests you most?";
+                return "We offer three main products:\n\n1. **User Management System** - Complete user solution\n2. **Account Complete Suite** - All-in-one account platform\n3. **Smart Registration Platform** - Automated registration system\n\nWhich one interests you most?";
             }
             
             if (msg.includes('register') || msg.includes('registration')) {
-                return "To register an employee:\n\n1. Enter their email address in the form\n2. Click 'Register Employee'\n3. The system will automatically create their profile\n\nYou can also register multiple employees through our bulk import feature. Would you like help with registration?";
+                // If the user asks to register a user, guide them to the form.
+                // We'll also check if an email is provided in the message.
+                const emailMatch = msg.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/);
+                let responseText = "To register a user, please go to the 'Register' tab and fill out the form there.";
+                if (emailMatch) {
+                    const email = emailMatch[0];
+                    responseText += ` I've detected an email: ${email}. You can use that in the form.`;
+                    // Pre-fill the email input if the form is visible
+                    if (document.getElementById('register').classList.contains('active')) {
+                        emailInput.value = email;
+                    }
+                }
+                responseText += "\n\n1. Enter their email address in the form\n2. Click 'Register User'\n3. The system will automatically create their profile\n\nWould you like help with registration?";
+                return responseText;
             }
             
             if (msg.includes('help') || msg.includes('support')) {
-                return "I'm here to help! You can ask me about:\n\n• Product information and features\n• Pricing and plans\n• Employee registration process\n• Technical support\n\nYou can also contact our support team at support@company.com or call 1-800-SUPPORT.";
+                return "I'm here to help! You can ask me about:\n\n• Product information and features\n• Pricing and plans\n• User registration process\n• Technical support\n\nYou can also contact our support team at support@company.com or call 1-800-SUPPORT.";
             }
             
             if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) {
-                return "Hello! 👋 I'm your AI assistant. I can help you with product information, pricing, and employee registration. What would you like to know?";
+                return "Hello! 👋 I'm your AI assistant. I can help you with product information, pricing, and user registration. What would you like to know?";
             }
             
             if (msg.includes('thank')) {
@@ -624,7 +1613,7 @@
             }
             
             // Default response
-            return "I'd be happy to help! I can provide information about our products, pricing, and employee registration process. You can also ask me to help register an employee or connect you with support. What specific information are you looking for?";
+            return "I'd be happy to help! I can provide information about our products, pricing, and user registration process. You can also ask me to help register a user or connect you with support. What specific information are you looking for?";
         }
 
         function addChatMessage(message, sender) {
@@ -645,12 +1634,118 @@
             typingIndicator.style.display = 'none';
         }
 
-        // Initialize
-        emailInput.addEventListener('input', () => {
-            if (message.style.display === 'block') {
-                message.style.display = 'none';
+        // --- New: Exam Question Generator Logic ---
+        const topicInput = document.getElementById('topicInput');
+        const generateQuestionsBtn = document.getElementById('generateQuestionsBtn');
+        const questionLoading = document.getElementById('questionLoading');
+        const generatedQuestionsOutput = document.getElementById('generatedQuestionsOutput');
+        const questionMessage = document.getElementById('questionMessage');
+
+        generateQuestionsBtn.addEventListener('click', async () => {
+            const topic = topicInput.value.trim();
+            if (!topic) {
+                showQuestionMessage('Please enter a topic to generate questions.', 'error');
+                return;
+            }
+
+            generateQuestionsBtn.disabled = true;
+            questionLoading.style.display = 'block';
+            generatedQuestionsOutput.innerHTML = ''; // Clear previous questions
+            questionMessage.style.display = 'none';
+
+            try {
+                const prompt = `Generate 5 short answer questions about "${topic}". Provide the questions as a JSON array of strings. Do not include any explanations or extra text, just the JSON array.`;
+                
+                const payload = {
+                    contents: [{ role: "user", parts: [{ text: prompt }] }],
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "ARRAY",
+                            items: {
+                                type: "STRING"
+                            }
+                        }
+                    }
+                };
+
+                const apiKey = ""; // Canvas will provide this at runtime
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    try {
+                        const questions = JSON.parse(result.candidates[0].content.parts[0].text);
+                        if (Array.isArray(questions) && questions.length > 0) {
+                            generatedQuestionsOutput.innerHTML = questions.map((q, index) => `<strong>${index + 1}.</strong> ${q}`).join('<br><br>');
+                            showQuestionMessage('Questions generated successfully!', 'success');
+                        } else {
+                            generatedQuestionsOutput.innerHTML = 'No questions generated for this topic. Please try a different topic or be more specific.';
+                            showQuestionMessage('Could not generate questions.', 'error');
+                        }
+                    } catch (e) {
+                        console.error('Failed to parse JSON from LLM:', e);
+                        generatedQuestionsOutput.innerHTML = 'Error: Could not parse questions from AI. Please try again.';
+                        showQuestionMessage('Error in parsing AI response.', 'error');
+                    }
+                } else {
+                    generatedQuestionsOutput.innerHTML = 'No response from AI for questions. Please try again.';
+                    showQuestionMessage('No AI response.', 'error');
+                }
+
+            } catch (error) {
+                console.error('Error generating questions:', error);
+                generatedQuestionsOutput.innerHTML = 'Failed to generate questions. Please check your internet connection or try again later.';
+                showQuestionMessage('Failed to connect to AI service.', 'error');
+            } finally {
+                generateQuestionsBtn.disabled = false;
+                questionLoading.style.display = 'none';
             }
         });
+
+        function showQuestionMessage(text, type) {
+            questionMessage.textContent = text;
+            questionMessage.className = `form-message ${type}`;
+            questionMessage.style.display = 'block';
+            setTimeout(() => {
+                questionMessage.style.display = 'none';
+            }, 5000);
+        }
+
+
+        // Initialize on window load
+        window.onload = function() {
+            updateDate(); // Update date on page load
+            // Ensure email input listener for form message is initialized
+            emailInput.addEventListener('input', () => {
+                if (formMessage.style.display === 'block') {
+                    formMessage.style.display = 'none';
+                }
+            });
+            topicInput.addEventListener('input', () => {
+                if (questionMessage.style.display === 'block') {
+                    questionMessage.style.display = 'none';
+                }
+            });
+            // Initial animation for content
+            document.querySelectorAll('.card, .hero-content, .job-item, .news-item, .book-card, .question-generator-container').forEach(element => {
+                element.style.opacity = '0'; // Hide elements initially
+                observer.observe(element);
+            });
+        };
     </script>
 </body>
 </html>
